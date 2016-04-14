@@ -1,0 +1,23 @@
+{
+  "name": "arm",
+  "version": "0.0.1",
+  "description": "",
+  "authors": "",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "*",
+    "angular": "*",
+    "angular-ui-router": "*",
+    "angular-bootstrap": "*",
+    "angular-permission": "1.1.1",
+    "angular-file-upload": "*",
+    "angular-toastr": "*",
+    "angular-animate": "*",
+    "bootstrap": "*",
+    "font-awesome": "^4.5.0"
+  }
+}

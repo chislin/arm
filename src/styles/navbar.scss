@@ -1,0 +1,16 @@
+@import 'variables';
+
+/* ==========================================================================
+   Navbar common styles
+   ========================================================================== */
+.navbar {
+  border-radius: 0;
+  overflow: hidden;
+  margin: 0;
+  background-color: $primary-color;
+  border: 0;
+  z-index: 2;
+
+  .navbar-header {
+  }
+}

@@ -1,15 +1,37 @@
 {
   "name": "arm",
   "version": "0.0.1",
-  "dependencies": {
-    "angular": "*",
-    "angular-route": "^1.5.3",
-    "body-parser": "*",
-    "bootstrap": "*",
-    "express": "*",
-    "jquery": "^2.2.2",
-    "md5": "*",
-    "mongoose": "*"
+  "description": " ",
+  "author": "",
+  "main": "./server.js",
+  "scripts": {
+    "start": "node ./server.js"
   },
-  "author": "Vlad Chislin <email>"
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "bower": "*",
+    "express": "*",
+    "gulp": "*",
+    "gulp-babel": "5.3.*",
+    "gulp-concat": "*",
+    "gulp-cssnano": "*",
+    "gulp-if": "*",
+    "gulp-jade": "*",
+    "gulp-less": "*",
+    "gulp-rimraf": "*",
+    "gulp-sass": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-uglify": "*",
+    "gulp-wrap": "*",
+    "md5": "^2.1.0",
+    "mongoose": "^4.4.12",
+    "serve-static": "*",
+    "yargs": "*"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": "4.3.*",
+    "npm": "2.*"
+  }
 }

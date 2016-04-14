@@ -1,0 +1,88 @@
+@import 'variables';
+
+/* ==========================================================================
+   Base styles
+   ========================================================================== */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+html {
+  height: 100%;
+  min-height: 100%;
+  min-width: 320px;
+  line-height: 1.5;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+body {
+  height: 100%;
+  font-family: "Segoe UI", opensans, Helvetica Neue, Helvetica, Arial, sans-serif !important;
+  overflow: hidden;
+}
+
+main, ui-view {
+  height: 100%;
+}
+
+header, footer, article, section, nav, figure, aside, main { display: block; }
+
+input:focus, select:focus, textarea:focus, button:focus, a:focus { outline:none; }
+
+input.ng-dirty.ng-invalid {
+  border: 1px solid #822;
+  background-color: #fcc;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+audio, canvas, img, video {
+  vertical-align: middle;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  margin: 0;
+  padding: 0;
+  resize: vertical;
+}
+
+:after, :before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+::-moz-selection {
+  background: #6fa8dc;
+  color: white;
+  text-shadow: none;
+}
+
+::selection {
+  background: #6fa8dc !important;
+  color: white !important;
+  text-shadow: none;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
