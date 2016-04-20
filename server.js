@@ -1,15 +1,8 @@
 // Libraries
 var express = require('express');
-var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
 var server = express();
-
-mongoose.connect('mongodb://lukichev:lukichev@ds023540.mlab.com:23540/arm_local');
-var db = mongoose.connection;
-db.once('open', function() {
-    console.log(`Initialized db connection`);
-});
 
 server.set('port', (process.env.PORT || 3000));
 server.set('x-powered-by', false);
@@ -42,6 +35,10 @@ require('./app')(server);
 server.use(function(req, res, next) {
     console.log(`UNRESOLVED: [${req.method}] ${req.headers.host}${req.url}`);
     next();
+});
+
+server.use(function (err, req, res, next) {
+    res.status(500).send(err.message)
 });
 
 server.listen(server.get('port'), function () {
