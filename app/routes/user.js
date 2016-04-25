@@ -2,6 +2,8 @@ var router = require('express')();
 var User = require('../models/user');
 var Token = require('../models/token');
 
+var authenticate = require('../middlewares/auth');
+
 router.post('/signup', function (req, res, next) {
     console.log('here');
 
@@ -33,30 +35,9 @@ router.post('/signup', function (req, res, next) {
             })
         })
         .catch(next);
-
-    //    
-    //    
-    //    
-    //    
-    //    
-    //    
-    //     , function (err, existingUser) {
-    //     if (existingUser) {
-    //         return res.status(409).send({message: 'Email is already taken'});
-    //     }
-    //
-    //     var user = new User(req.body);
-    //
-    //     user.save(function (err, result) {
-    //         if (err) {
-    //             res.status(500).send({message: err.message});
-    //         }
-    //         res.send({user: user});
-    //     });
-    // });
 });
 
-router.get('/user/:id', function (req, res, next) {
+router.get('/user/:id',  authenticate(), function (req, res, next) {
     User
         .findOne({'_id': req.params.id})
         .exec()
@@ -68,7 +49,7 @@ router.get('/user/:id', function (req, res, next) {
         });
 });
 
-router.put('/user/:id', function (req, res, next) {
+router.put('/user/:id', authenticate(), function (req, res, next) {
     User.findOne({'_id': req.params.id}, function (err, user) {
         if (err) return handleError(err);
         if (user) {
@@ -77,7 +58,7 @@ router.put('/user/:id', function (req, res, next) {
     });
 });
 
-router.delete('/user/:id', function (req, res, next) {
+router.delete('/user/:id', authenticate(), function (req, res, next) {
     User
         .remove({_id: req.params.id})
         .exec()
@@ -87,18 +68,41 @@ router.delete('/user/:id', function (req, res, next) {
 });
 
 
-router.post('/auth/login', function (req, res) {
-    User.findOne({username: req.body.username}, '+password', function (err, user) {
-        if (!user) {
-            return res.status(401).send({message: 'Invalid email and/or password'});
-        }
-        user.comparePassword(req.body.password, function (isMatch) {
-            if (!isMatch) {
-                return res.status(401).send({message: 'Invalid email and/or password'});
+router.post('/login', function (req, res, next) {
+    User
+        .findOne({ username: req.body.username })
+        .then(function (result) {
+            var user = result;
+
+            if (!user) {
+                throw new Error('User not found.');
             }
-            res.send({user: user});
-        });
-    });
+
+            user.comparePassword(req.body.password, function (isMatch) {
+                if (!isMatch) {
+                    return res.status(401).send({message: 'Invalid email and/or password'});
+                }
+
+                var token = new Token({ user_id : user._id });
+
+                return token.save(function(){
+                    res.status(200).send({
+                        user: user,
+                        token: token
+                    })
+                });
+            })
+        })
+        .catch(next);
+});
+
+router.post('/logout', function (req, res, next) {
+    Token
+        .remove({ hash : req.headers.authentication })
+        .then(function () {
+            res.status(200).send({ 'message' : 'Successfully logout.'})
+        })
+        .catch(next);
 });
 
 module.exports = router;

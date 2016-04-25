@@ -12,7 +12,8 @@ var tokenSchema = new mongoose.Schema({
         default : function(){
             return md5(Math.random());
         }
-    }
+    },
+    created: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model('Token', tokenSchema);

@@ -6,8 +6,11 @@ AuthController.$inject = ['$rootScope', 'Authentication'];
 
 function AuthController($rootScope, Authentication) {
     var self = this;
+    
+    self.alerts = [];
+    self.view = 'signin';
 
-    self.signin = (credentials) => {
+    self.signIn = (credentials) => {
         Authentication
             .login(credentials)
             .then(function(){
@@ -18,7 +21,7 @@ function AuthController($rootScope, Authentication) {
             })
     };
 
-    this.signUp = (credentials) => {
+    self.signUp = (credentials) => {
         Authentication
             .signUp(credentials)
             .then(function(){

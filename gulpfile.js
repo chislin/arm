@@ -43,7 +43,6 @@ var paths = {
     ],
     fonts : [
         `vendor/bootstrap/fonts/*.*`,
-        `vendor/font-awesome/fonts/*.*`,
         `src/fonts/*.*`
     ]
 };
@@ -119,6 +118,13 @@ gulp.task('copy-images', function () {
         .src('src/images/**/*.*')
         .pipe(gulp.dest('dist/images/'));
 });
+
+gulp.task('copy-fonts', function() {
+    return gulp
+        .src(paths.fonts)
+        .pipe(gulp.dest('dist/fonts/'))
+});
+
 
 gulp.task('install', [
     'copy-images',

@@ -1,9 +1,33 @@
-nav.navbar.navbar-default
-    .container-fluid
-        .navbar-header
-            a.navbar-brand(href='#') ARM
-        .navbar-collapse.collapse
-
-            ul.nav.navbar-nav.navbar-right
+.container
+    .header.clearfix
+        nav
+            ul.nav.nav-pills.pull-right
+                li
+                    a {{ self.user.username }}
+                li
+                    a(ui-sref='main', ui-sref-active = 'active') Home
                 li
                     a(ng-click='self.logout()') Logout
+
+        h3.text-muted ARM
+
+    .row
+        .col-sm-6.map
+
+        .col-sm-6.notes
+            .form-group
+                btn.btn.btn-success(ng-click = 'self.createNote()') Create new Note
+
+            ul
+                li.note.clearfix(ng-repeat = 'note in self.notes')
+                    .text {{ note.text }}
+                    .date {{ note.date }}
+                    .actions
+                        i.glyphicon.glyphicon-pencil
+                        i.glyphicon.glyphicon-trash
+
+
+
+
+    footer.footer
+        p &copy; 2015 Vlad's awesome company, Inc.

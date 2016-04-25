@@ -2,8 +2,9 @@ var router = require('express')();
 
 var Note = require('../models/note');
 
+var authenticate = require('../middlewares/auth');
 
-router.post('/notes', function (req, res) {
+router.post('/notes/:id', authenticate(),  function (req, res) {
     var note = new Note({
         text: req.body.text,
         user_id: req.params.id
@@ -17,20 +18,16 @@ router.post('/notes', function (req, res) {
     });
 });
 
-router.get('/notes/:id', function (req, res, next) {
+router.get('/notes/:id', authenticate(), function (req, res, next) {
     Note
-        .findById(req.params.id)
-        .exec()
-        .then(function (note) {
-            console.log(note);
-            if (note) {
-                res.status(200).json(note);
-            }
+        .find({ user_id : req.params.id })
+        .then(function (notes) {
+            res.status(200).send(notes);
         })
         .catch(next)
 });
 
-router.patch('/notes/:id', function (req, res, next) {
+router.patch('/notes/:id',  authenticate(), function (req, res, next) {
     Note.findOne({'_id': req.params.id})
         .exec()
         .then(function (note) {
@@ -43,7 +40,7 @@ router.patch('/notes/:id', function (req, res, next) {
         .catch(next)
 });
 
-router.delete('/notes/:id', function (req, res, next) {
+router.delete('/notes/:id', authenticate(), function (req, res, next) {
     Note
         .remove({_id: req.params.id})
         .exec()

@@ -11,6 +11,7 @@ function AuthenticationProvider() {
             constructor() {
                 $rootScope.Authentication = this;
 
+                this.token = null;
                 this.user = null;
             }
 
@@ -20,6 +21,17 @@ function AuthenticationProvider() {
                 if (!this.isAuthenticated()) {
                     return;
                 }
+            }
+
+            setToken(token) {
+                this.token = token;
+
+                Storage.set('token', token);
+            }
+
+            clearUser() {
+                this.token = null;
+                Storage.remove('token'); 
             }
 
             setUser(user) {
@@ -38,7 +50,7 @@ function AuthenticationProvider() {
             }
 
             isAuthenticated() {
-                return (!! this.user);
+                return (!! this.token);
             }
 
             signUp(credentials) {
@@ -46,9 +58,13 @@ function AuthenticationProvider() {
                     deferred = $q.defer();
 
                 $http
-                    .post('/user/signup', credentials)
+                    .post('/signup', credentials)
                     .success((response) => {
-                        self.setUser(response);
+
+                        console.log(response);
+
+                        self.setUser(response.user);
+                        self.setToken(response.token);
                         deferred.resolve();
                     })
                     .error((err)=>{
@@ -63,7 +79,7 @@ function AuthenticationProvider() {
                     deferred = $q.defer();
 
                 $http
-                    .post('/auth/login', credentials)
+                    .post('/login', credentials)
                     .success((response) => {
                         self.setToken(response);
                         deferred.resolve();
@@ -80,6 +96,7 @@ function AuthenticationProvider() {
                     deferred = $q.defer();
 
                 self.clearUser();
+                self.clearToken();
                 deferred.resolve();
 
                 return deferred.promise;

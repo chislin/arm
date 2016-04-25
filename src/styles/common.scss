@@ -86,3 +86,25 @@ textarea {
 .clearfix:after {
   clear: both;
 }
+
+
+.note {
+  width: 100%;
+  list-style: none;
+  .text {
+    float: left;
+
+  }
+  .actions {
+    float: right;
+    .glyphicon {
+      font-size: 30px;
+    }
+    .glyphicon-pencil {
+      color: green;
+    }
+    .glyphicon-trash {
+      color: red;
+    }
+  }
+}

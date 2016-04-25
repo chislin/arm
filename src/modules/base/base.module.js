@@ -19,7 +19,7 @@ function configure($locationProvider, $stateProvider, $urlRouterProvider) {
             url : '/',
             template: '',
             controller : [ "$state", "Authentication", function ($state, Authentication){
-                console.log(Authentication.isAuthenticated());
+                console.log(Authentication.isAuthenticated()); 
                 return Authentication.isAuthenticated() ? $state.go('main') : $state.go('auth');
             }]
         })
@@ -27,8 +27,6 @@ function configure($locationProvider, $stateProvider, $urlRouterProvider) {
             url : '/err404',
             templateUrl : './../404.html'
         });
-
-    $urlRouterProvider.otherwise('/auth');
 }
 
 run.$inject = ['$state', '$rootScope'];

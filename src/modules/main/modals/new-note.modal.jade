@@ -1,0 +1,16 @@
+.modal-header
+    h3.modal-title New note.
+.modal-body
+    label Note
+    .input-group
+        span.input-group-addon @
+        input.form-control(type='text', placeholder='Text', ng-model = 'self.note')
+
+    label Member
+    .input-group
+        span.input-group-addon @
+        input.form-control(type='text', placeholder='Member')
+
+.modal-footer
+    button.btn.btn-primary(type='button', ng-click='self.create(self.note)') Save
+    button.btn.btn-warning(type='button', ng-click='self.cancel()') Cancel
