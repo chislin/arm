@@ -1,6 +1,6 @@
 .col-md-6.col-lg-4.col-md-offset-3.col-lg-offset-4(ng-switch = 'self.view')
 
-    .signin-container.well(ng-switch-when = 'signin')
+    .signin-container.well(ng-switch-when = 'signup')
         .signin-header
             .brand
                 h2 Arm
@@ -18,7 +18,7 @@
                 .form-actions
                     button.btn.btn-primary(type='submit') Sign In
 
-    .signup-container.well(ng-switch-when = 'signup')
+    .signup-container.well(ng-switch-when = 'signin')
         .signin-header
             .brand
                 h2 Arm
@@ -33,10 +33,13 @@
                 .form-actions
                     button.btn.btn-primary(type='submit') Sign Up
 
+    uib-alert(ng-repeat = "alert in self.alerts", type = "{{alert.type}}", close = "self.closeAlert($index)")
+        | {{ alert.msg }}       
+
     .switch(ng-switch-when = 'signup')
-        | Already have account?
-        a(ng-click = "self.view = 'signin'") &nbsp Sign In.
+        | Already have account?&nbsp
+        a(ng-click = "self.view = 'signin'") Sign In.
 
     .switch(ng-switch-when = 'signin')
-        | New?
-        a(ng-click = "self.view = 'signup'") &nbsp Sign Up.
+        | New?&nbsp
+        a(ng-click = "self.view = 'signup'") Sign Up.

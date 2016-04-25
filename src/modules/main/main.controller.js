@@ -41,4 +41,17 @@ function MainController($rootScope, Authentication, NotesService, $uibModal) {
                 console.error('Modal dismissed at: ' + new Date());
             });
     };
+
+    self.updateNote = (note) => {
+        NotesService
+            .edit(note._id, note.text)
+            .then(function(result){
+                note = note;
+                note.edit = false;
+            });
+    }
+
+    selt.deleteNote = (note_id) => {
+        
+    }
 }

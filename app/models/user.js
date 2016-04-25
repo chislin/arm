@@ -26,7 +26,6 @@ userSchema.pre('save', function(next) {
 });
 
 userSchema.methods.comparePassword = function(password, done) {
-    // console.log(this);
     var user = this;
     
     if (md5(password) == user.password) {

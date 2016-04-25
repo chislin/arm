@@ -28,11 +28,12 @@ router.get('/notes/:id', authenticate(), function (req, res, next) {
 });
 
 router.patch('/notes/:id',  authenticate(), function (req, res, next) {
-    Note.findOne({'_id': req.params.id})
-        .exec()
+    console.log('here'); 
+    Note
+        .findOne({'_id': req.params.id})
         .then(function (note) {
             note.text = req.body.text;
-            return note.save();
+            return note.save(); 
         })
         .then(function (note) {
             res.send(note);

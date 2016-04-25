@@ -5,7 +5,8 @@
   "author": "",
   "main": "./server.js",
   "scripts": {
-    "start": "node ./server.js"
+    "start": "node ./server.js",
+    "postinstall" : "bower install && gulp install"
   },
   "private": true,
   "dependencies": {

@@ -42,8 +42,9 @@ var paths = {
         `vendor/angular-toastr/dist/angular-toastr.css`
     ],
     fonts : [
-        `vendor/bootstrap/fonts/*.*`,
-        `src/fonts/*.*`
+        'vendor/bootstrap/fonts/*.*',
+        'vendor/font-awesome/fonts/*.*',
+        'src/fonts/*.*'
     ]
 };
 
@@ -128,6 +129,7 @@ gulp.task('copy-fonts', function() {
 
 gulp.task('install', [
     'copy-images',
+    'copy-fonts',
     'js',
     'styles',
     'templates'

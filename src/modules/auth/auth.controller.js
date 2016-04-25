@@ -17,6 +17,7 @@ function AuthController($rootScope, Authentication) {
                 $rootScope.$state.go('main');
             })
             .catch((err) => {
+                self.alerts.push({ type: 'danger', msg: err });
                 console.error(err);
             })
     };
@@ -28,6 +29,7 @@ function AuthController($rootScope, Authentication) {
                 $rootScope.$state.go('main');
             })
             .catch((err) => {
+                self.alerts.push({ type: 'danger', msg: err });
                 console.error(err);
             })
     };

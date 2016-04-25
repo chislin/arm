@@ -14,11 +14,23 @@ function configure($stateProvider, $httpProvider) {
             url: '/auth/', 
             controller : 'AuthController',
             controllerAs : 'self',
-            templateUrl : 'auth/auth.controller.html'
-        });
+            templateUrl : 'auth/auth.controller.html',
+            data: {
+                permissions: {
+                    only: [ 'guest' ],
+                    redirectTo : 'main'
+                }
+            }
+        })
 }
 
-run.$inject = ['Authentication'];
-function run(Authentication) {
+run.$inject = ['Permission', 'Authentication'];
+function run(Permission, Authentication) {
     Authentication.initialize();
+
+    Permission
+        .defineRole('guest', () =>
+            !Authentication.isAuthenticated())
+        .defineRole('user', () =>
+            Authentication.isAuthenticated())
 }

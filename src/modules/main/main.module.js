@@ -12,6 +12,12 @@ function configure($stateProvider) {
             url : '/main/',
             templateUrl : 'main/main.controller.html',
             controller : 'MainController',
-            controllerAs : 'self'
+            controllerAs : 'self',
+            data: {
+                permissions: {
+                    only: [ 'user' ],
+                    redirectTo : 'auth'
+                }
+            }
         })
 }

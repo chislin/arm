@@ -34,8 +34,17 @@ class NotesService {
         })
     }
 
-    edit(id, data) {
-
+    edit(id, text) {
+        return $q(function (resolve, reject) {
+            $http
+                .patch(`/notes/${id}`, { text : text })
+                .success((result) => {
+                    resolve(result)
+                })
+                .error((err) => {
+                    reject(err)
+                });
+        })
     }
 
     remove(id) {

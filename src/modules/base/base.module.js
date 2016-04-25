@@ -1,7 +1,8 @@
 angular
     .module('arm.base', [
         'ui.router',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'permission'
     ])
     .config(configure)
     .run(run);

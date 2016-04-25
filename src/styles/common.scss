@@ -88,23 +88,72 @@ textarea {
 }
 
 
-.note {
-  width: 100%;
-  list-style: none;
-  .text {
-    float: left;
-
+// AUTH PAGE STYLES
+body.auth {
+  .well {
+    margin-top: 15%;
   }
-  .actions {
+
+  .switch {
+    width: 100%;
+    text-align: center;
+    a { 
+      cursor: pointer;
+    }
+  }
+  .btn {
+    width: 100%;
+  }
+}
+
+
+// MAIN PAGE STYLES
+
+body.main {
+  .navbar {
+    overflow: visible;
+    margin-bottom: 15px;
+    li {
+      cursor: pointer;
+    }
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  .note {
+    width: 100%;
+    list-style: none;
+    border: 1px solid #e5e5e5;
+    padding: 15px 10px;
+    .text {
+      float: left;
+
+    }
+    .actions {
+      float: right;
+      .fa {
+        font-size: 20px;
+        margin: 0 5px;
+        cursor: pointer;
+      }
+      .fa-pencil {
+        color: green;
+        &:hover {
+          color: darken(green, 10%);
+        }
+      }
+      .fa-trash {
+        color: red;
+        &:hover {
+          color: darken(red, 10%);
+        }
+      }
+    }
+  }
+
+  footer {
     float: right;
-    .glyphicon {
-      font-size: 30px;
-    }
-    .glyphicon-pencil {
-      color: green;
-    }
-    .glyphicon-trash {
-      color: red;
-    }
   }
 }

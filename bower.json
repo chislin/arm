@@ -18,6 +18,6 @@
     "angular-toastr": "*",
     "angular-animate": "*",
     "bootstrap": "*",
-    "font-awesome": "^4.5.0"
+    "font-awesome": "*"
   }
 }

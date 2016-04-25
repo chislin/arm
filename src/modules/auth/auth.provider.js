@@ -17,6 +17,7 @@ function AuthenticationProvider() {
 
             initialize() {
                 this.user = Storage.get('user');
+                this.token = Storage.get('token');
 
                 if (!this.isAuthenticated()) {
                     return;
@@ -29,7 +30,7 @@ function AuthenticationProvider() {
                 Storage.set('token', token);
             }
 
-            clearUser() {
+            clearToken() {
                 this.token = null;
                 Storage.remove('token'); 
             }
@@ -44,7 +45,7 @@ function AuthenticationProvider() {
                 return this.user;
             }
 
-            clearToken() {
+            clearUser() {
                 this.user = null;
                 Storage.remove('user');
             }
