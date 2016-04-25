@@ -44,7 +44,7 @@ function AuthenticationProvider() {
                 return this.user;
             }
 
-            clearUser() {
+            clearToken() {
                 this.user = null;
                 Storage.remove('user');
             }
@@ -60,11 +60,9 @@ function AuthenticationProvider() {
                 $http
                     .post('/signup', credentials)
                     .success((response) => {
-
-                        console.log(response);
-
                         self.setUser(response.user);
                         self.setToken(response.token);
+
                         deferred.resolve();
                     })
                     .error((err)=>{
@@ -81,7 +79,9 @@ function AuthenticationProvider() {
                 $http
                     .post('/login', credentials)
                     .success((response) => {
-                        self.setToken(response);
+                        self.setUser(response.user);
+                        self.setToken(response.token);
+                        
                         deferred.resolve();
                     })
                     .error((err)=>{
