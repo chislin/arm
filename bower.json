@@ -13,7 +13,7 @@
     "angular": "*",
     "angular-ui-router": "*",
     "angular-bootstrap": "*",
-    "angular-permission": "1.1.1",
+    "angular-permission": "*",
     "angular-file-upload": "*",
     "angular-toastr": "*",
     "angular-animate": "*",
