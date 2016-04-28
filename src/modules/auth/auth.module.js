@@ -24,13 +24,15 @@ function configure($stateProvider, $httpProvider) {
         })
 }
 
-run.$inject = ['Permission', 'Authentication'];
-function run(Permission, Authentication) {
+run.$inject = ['RoleStore', 'Authentication'];
+function run(RoleStore, Authentication) {
     Authentication.initialize();
 
-    Permission
-        .defineRole('guest', () =>
-            !Authentication.isAuthenticated())
-        .defineRole('user', () =>
+    RoleStore
+        .defineRole('guest', [], () =>
+            !Authentication.isAuthenticated());
+
+    RoleStore
+        .defineRole('user', [], () =>
             Authentication.isAuthenticated())
 }

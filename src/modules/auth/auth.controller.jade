@@ -3,43 +3,43 @@
     .signin-container.well(ng-switch-when = 'signup')
         .signin-header
             .brand
-                h2 Arm
+                h2 Мобильное АРМ следователя
 
         .signin-form
-            h5 Create new account
+            h5 Создать новую учетную запись
             form(ng-submit='self.signUp(self.credentials_signup)')
                 .form-group
-                    input.form-control(ng-model = 'self.credentials_signup.username', type='text', placeholder='Username')
+                    input.form-control(ng-model = 'self.credentials_signup.username', type='text', placeholder='Логин')
                 .form-group
-                    input.form-control(ng-model = 'self.credentials_signup.password', type='password', placeholder='Password')
+                    input.form-control(ng-model = 'self.credentials_signup.password', type='password', placeholder='Пароль')
                 .form-group
-                    input.form-control(ng-model = 'self.credentials_signup.password_check', type='password', placeholder='Confirm Password')
+                    input.form-control(ng-model = 'self.credentials_signup.password_check', type='password', placeholder='Подтвердите пароль')
 
                 .form-actions
-                    button.btn.btn-primary(type='submit') Sign In
+                    button.btn.btn-primary(type='submit') Создать
 
     .signup-container.well(ng-switch-when = 'signin')
         .signin-header
             .brand
-                h2 Arm
+                h2 Мобильное АРМ следователя
 
         .signin-form
-            h5 Login
+            h5 Войти в существующую учетную запись
             form(ng-submit='self.signIn(self.credentials_signin)')
                 .form-group
-                    input.form-control(ng-model = 'self.credentials_signin.username', type='text', placeholder='Username')
+                    input.form-control(ng-model = 'self.credentials_signin.username', type='text', placeholder='Логин')
                 .form-group
-                    input.form-control(ng-model = 'self.credentials_signin.password', type='password', placeholder='Password')
+                    input.form-control(ng-model = 'self.credentials_signin.password', type='password', placeholder='Пароль')
                 .form-actions
-                    button.btn.btn-primary(type='submit') Sign Up
+                    button.btn.btn-primary(type='submit') Войти
 
     uib-alert(ng-repeat = "alert in self.alerts", type = "{{alert.type}}", close = "self.closeAlert($index)")
         | {{ alert.msg }}       
 
     .switch(ng-switch-when = 'signup')
-        | Already have account?&nbsp
-        a(ng-click = "self.view = 'signin'") Sign In.
+        | Уже есть аккаунт?&nbsp
+        a(ng-click = "self.view = 'signin'") Войти.
 
     .switch(ng-switch-when = 'signin')
-        | New?&nbsp
-        a(ng-click = "self.view = 'signup'") Sign Up.
+        | Еще нет учетной записи?&nbsp
+        a(ng-click = "self.view = 'signup'") Зарегистрироваться.

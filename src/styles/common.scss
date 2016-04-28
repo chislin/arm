@@ -19,7 +19,6 @@ html {
 body {
   height: 100%;
   font-family: "Segoe UI", opensans, Helvetica Neue, Helvetica, Arial, sans-serif !important;
-  overflow: hidden;
 }
 
 main, ui-view {
@@ -156,4 +155,22 @@ body.main {
   footer {
     float: right;
   }
+}
+
+.done {
+  opacity: 0.6;
+}
+
+.todo .table{
+  .input-group {
+    .btn-calendar {
+      position: absolute;
+    }
+  }
+}
+
+.map-container {
+  height: 300px;
+  width: 100%;
+
 }

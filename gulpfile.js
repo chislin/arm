@@ -34,7 +34,8 @@ var paths = {
         `vendor/angular-bootstrap/ui-bootstrap-tpls.js`,
         `vendor/angular-permission/dist/angular-permission.js`,
         `vendor/angular-file-upload/dist/angular-file-upload.js`,
-        `vendor/angular-toastr/dist/angular-toastr.tpls.js` 
+        `vendor/angular-toastr/dist/angular-toastr.tpls.js`,
+        'vendor/angular-yandex-maps/ya-map-2.1.min.js'
     ],
     styles : [
         `vendor/bootstrap/dist/css/bootstrap.css`, 

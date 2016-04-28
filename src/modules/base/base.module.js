@@ -2,7 +2,8 @@ angular
     .module('arm.base', [
         'ui.router',
         'ui.bootstrap',
-        'permission'
+        'permission',
+        'yaMap'
     ])
     .config(configure)
     .run(run);

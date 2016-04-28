@@ -18,6 +18,10 @@
     "angular-toastr": "*",
     "angular-animate": "*",
     "bootstrap": "*",
-    "font-awesome": "*"
+    "font-awesome": "*",
+    "angular-yandex-maps": "tulov/angular-yandex-map"
+  },
+  "resolutions": {
+    "angular": "1.5.5"
   }
 }

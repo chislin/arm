@@ -1,16 +1,16 @@
 var $http, $q, CONFIG;
 
-class NotesService {
+class ToDoService {
     constructor($$http, $$q, $CONFIG) {
         $http = $$http;
         $q = $$q;
         CONFIG = $CONFIG;
     }
 
-    create(user_id, note) {
+    create(user_id, todo) {
         return $q(function (resolve, reject) {
             $http
-                .post(`/notes/${user_id}`, { text : note })
+                .post(`/todo/${user_id}`, todo)
                 .success((result) => {
                     resolve(result)
                 })
@@ -23,7 +23,7 @@ class NotesService {
     get(user_id) {
         return $q(function (resolve, reject) {
             $http
-                .get(`/notes/${user_id}`)
+                .get(`/todo/${user_id}`)
                 .success((result) => {
                     resolve(result)
                 })
@@ -33,10 +33,10 @@ class NotesService {
         })
     }
 
-    edit(id, text) {
+    edit(id, todo) {
         return $q(function (resolve, reject) {
             $http
-                .patch(`/notes/${id}`, { text : text })
+                .patch(`/todo/${id}`, todo)
                 .success((result) => {
                     resolve(result)
                 })
@@ -49,7 +49,7 @@ class NotesService {
     remove(id) {
         return $q(function (resolve, reject) {
             $http
-                .delete(`/notes/${id}`)
+                .delete(`/todo/${id}`)
                 .success((result) => {
                     resolve(result)
                 })
@@ -60,8 +60,8 @@ class NotesService {
     }
 }
 
-NotesService.$inject = ['$http', '$q', 'CONFIG'];
+ToDoService.$inject = ['$http', '$q', 'CONFIG'];
 
 angular
     .module('arm.main')
-    .service('NotesService', NotesService );
+    .service('ToDoService', ToDoService );

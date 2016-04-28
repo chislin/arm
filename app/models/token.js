@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 var md5 = require('md5');
 
 var tokenSchema = new mongoose.Schema({

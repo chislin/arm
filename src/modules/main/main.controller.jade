@@ -21,11 +21,59 @@ nav.navbar
 
 
 .container
-    .col-sm-6.map
+    .col-md-12.map
+        ya-map.map-container.col-md-12(ya-zoom="12", ya-after-init="self.afterInit($target)", ya-event-click="self.mapClick($event)")
+    .col-sm-6.todo
+        .col-md-5
+            .form-group
+                input.form-control(ng-model='self.newToDo.text', placeholder = 'Todo')
 
+        .col-md-4
+            .input-group(ng-init = 'self.datepicker = false')
+                input.form-control(type="text", uib-datepicker-popup, ng-model="self.newToDo.expired", is-open="self.datepicker", placeholder = "yyyy-mm-dd")
+                span.input-group-btn
+                    button.btn.btn-default(type='button', ng-click='self.datepicker = !self.datepicker')
+                        i.glyphicon.glyphicon-calendar
+
+        .col-md-3
+            btn.btn.btn-success(ng-click = 'self.createToDo(self.newToDo)') Create new ToDo
+
+        table.table.table-hover
+            thead
+                tr
+                    th
+                    th ToDo
+                    th Created
+                    th Expired
+                    th Actions
+
+            tbody.note(ng-repeat = "todo in self.todo | orderBy: 'done'", ng-init = 'todo.edit = false', ng-class = "todo.done ? 'done' : ''")
+                tr(ng-if = '!todo.edit')
+                    td: input(type='checkbox', ng-model='todo.done', ng-change = 'self.updateToDo(todo)')
+                    td {{ todo.text }}
+                    td {{ todo.created | date : medium }}
+                    td {{ todo.expired | date : medium }}
+                    td.actions
+                        i.fa.fa-pencil(ng-click='todo.edit = !todo.edit')
+                        i.fa.fa-trash(ng-click='self.deleteToDo(todo._id, $index)')
+
+                tr(ng-if = 'todo.edit')
+                    td
+                    td: input(ng-model='todo.text')
+                    td {{ todo.created | date: medium }}
+                    td: .input-group(ng-init = 'todo.dt = false')
+                        input.form-control(type="text", uib-datepicker-popup, ng-model="todo.expired", is-open="todo.dt", placeholder = "yyyy-mm-dd")
+                        button.btn.btn-default.btn-calendar(type='button', ng-click='todo.dt = !todo.dt')
+                            i.glyphicon.glyphicon-calendar
+                    td.actions
+                        i.fa.fa-check(ng-click='self.updateToDo(todo)')
     .col-sm-6.notes
-        .form-group
-            btn.btn.btn-success(ng-click = 'self.createNote()') Create new Note
+        .col-md-8
+            .form-group
+                input.form-control(ng-model='self.newNote.text', placeholder = 'Note')
+
+        .col-md-4
+            btn.btn.btn-success(ng-click = 'self.createNote(self.newNote)') Create new Note
 
         table.table.table-hover
             thead
@@ -40,13 +88,15 @@ nav.navbar
                   td {{ note.created | date: medium }}
                   td.actions
                     i.fa.fa-pencil(ng-click='note.edit = !note.edit')
-                    i.fa.fa-trash(ng-click='self.deleteNote(note)')
+                    i.fa.fa-trash(ng-click='self.deleteNote(note._id, $index)')
 
                 tr(ng-if = 'note.edit')
                   td: input(ng-model='note.text')
                   td {{ note.created | date: medium }}
                   td.actions
                     i.fa.fa-check(ng-click='self.updateNote(note)')
+
+
 
     footer.footer
         p &copy; 2015 Vlad's awesome company, Inc.

@@ -4,10 +4,10 @@ var Note = require('../models/note');
 
 var authenticate = require('../middlewares/auth');
 
-router.post('/notes/:id', authenticate(),  function (req, res) {
+router.post('/notes/:user_id', authenticate(),  function (req, res) {
     var note = new Note({
         text: req.body.text,
-        user_id: req.params.id
+        user_id: req.params.user_id
     });
 
     note.save(function (err, result) {
@@ -18,9 +18,9 @@ router.post('/notes/:id', authenticate(),  function (req, res) {
     });
 });
 
-router.get('/notes/:id', authenticate(), function (req, res, next) {
+router.get('/notes/:user_id', authenticate(), function (req, res, next) {
     Note
-        .find({ user_id : req.params.id })
+        .find({ user_id : req.params.user_id })
         .then(function (notes) {
             res.status(200).send(notes);
         })
@@ -28,7 +28,6 @@ router.get('/notes/:id', authenticate(), function (req, res, next) {
 });
 
 router.patch('/notes/:id',  authenticate(), function (req, res, next) {
-    console.log('here'); 
     Note
         .findOne({'_id': req.params.id})
         .then(function (note) {
