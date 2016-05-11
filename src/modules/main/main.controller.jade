@@ -1,14 +1,10 @@
 nav.navbar
     .container
         .navbar-header
-                  
-        .navbar-brand ARM
-      
-          
-        ul.nav.navbar-nav.navbar-right
-            li
-                a(ui-sref='main', ui-sref-active = 'active') Home
+            .navbar-brand
+                | ARM
 
+        ul.nav.navbar-nav.navbar-right
             li.dropdown(uib-dropdown)
                 a.dropdown-toggle(uib-dropdown-toggle)
                     span {{ self.user.username }}
@@ -104,6 +100,6 @@ nav.navbar
                     i.fa.fa-check(ng-click='self.updateNote(note)')
 
 
-
+    hr
     footer.footer
         p &copy; 2015 Vlad's awesome company, Inc.
