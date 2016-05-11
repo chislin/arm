@@ -14,9 +14,21 @@ function MainController($rootScope, Authentication, ToDoService, NotesService, u
 
     uiGmapGoogleMapApi
         .then(function(map){
-            navigator.geolocation.getCurrentPosition(centerMe);
+
+            // TODO: get coordinates from browser
+            // FIXME: android's chrome geolocation problem
+            // navigator.geolocation.getCurrentPosition(function centerMe(position) {
+            //     self.map.center = {
+            //         latitude: position.coords.latitude,
+            //         longitude: position.coords.longitude
+            //     };
+            // });
 
             self.map = {
+                center : {
+                    latitude: 52.723817276749564,
+                    longitude: 41.452789306640625
+                },
                 zoom: 10,
                 markers : {
                     coords : [],
@@ -38,6 +50,7 @@ function MainController($rootScope, Authentication, ToDoService, NotesService, u
                             },
                             id : Date.now()
                         };
+                        console.log(marker);
 
                         MarkerService.create(self.user._id, marker)
                             .then(function(result){
@@ -60,13 +73,6 @@ function MainController($rootScope, Authentication, ToDoService, NotesService, u
                     scrollwheel: true
                 }
             };
-
-            function centerMe(position) {
-                self.map.center = {
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude
-                };
-            }
         });
 
     NotesService

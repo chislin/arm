@@ -27,7 +27,7 @@ nav.navbar
                 ui-gmap-window(show='self.map.window.show', coords='self.map.window.model.coords', options='self.map.window.options', ng-cloak,
                                templateurl="'/main/popup.html'", templateParameter='self.map.window')
 
-    .col-sm-6.todo
+    .col-md-6.todo
         .col-md-5
             .form-group
                 input.form-control(ng-model='self.newToDo.text', placeholder = 'Todo')
@@ -71,7 +71,10 @@ nav.navbar
                             i.glyphicon.glyphicon-calendar
                     td.actions
                         i.fa.fa-check(ng-click='self.updateToDo(todo)')
-    .col-sm-6.notes
+
+    hr
+
+    .col-md-6.notes
         .col-md-8
             .form-group
                 input.form-control(ng-model='self.newNote.text', placeholder = 'Note')

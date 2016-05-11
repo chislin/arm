@@ -1,0 +1,102 @@
+// MAIN PAGE STYLES
+
+body.main {
+  .navbar {
+    overflow: visible;
+    margin-bottom: 15px;
+    li {
+      cursor: pointer;
+    }
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  .notes {
+    padding: 0;
+  }
+
+  .note {
+    width: 100%;
+    list-style: none;
+    border-top: 1px;
+    .text {
+      float: left;
+
+    }
+    tr, td {
+      border: 0;
+    }
+
+    .actions {
+      float: right;
+      .fa {
+        font-size: 20px;
+        margin: 0 2px;
+        cursor: pointer;
+      }
+      .fa-pencil {
+        color: green;
+        &:hover {
+          color: darken(green, 10%);
+        }
+      }
+      .fa-trash {
+        color: red;
+        &:hover {
+          color: darken(red, 10%);
+        }
+      }
+    }
+  }
+
+  hr {
+    margin: 30px;
+  }
+
+  .todo {
+
+    .table {
+      .input-group {
+        .btn-calendar {
+          position: absolute;
+        }
+      }
+
+      .done {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .map {
+    height: 400px;
+    padding: 0;
+    margin-bottom: 15px;
+
+    ui-gmap-google-map {
+      .angular-google-map, .angular-google-map-container {
+        height: 100%;
+      }
+      .map-popup {
+        text-align: left;
+        p {
+          padding: 0;
+          &.title {
+            font-weight: bold;
+          }
+        }
+        .image {
+          height: 100px;
+          width: 150px;
+          background-size: cover;
+        }
+      }
+    }
+  }
+
+  footer {
+    float: right;
+  }
+}
