@@ -2,9 +2,9 @@ angular
     .module('arm.main')
     .controller('MainController', MainController);
 
-MainController.$inject = ['$rootScope', 'Authentication', 'ToDoService', 'NotesService', '$uibModal'];
+MainController.$inject = ['$rootScope', 'Authentication', 'ToDoService', 'NotesService', 'uiGmapGoogleMapApi', 'MarkerService'];
 
-function MainController($rootScope, Authentication, ToDoService, NotesService, $uibModal) {
+function MainController($rootScope, Authentication, ToDoService, NotesService, uiGmapGoogleMapApi, MarkerService) {
     var self = this;
 
     self.authentication = Authentication;
@@ -12,18 +12,62 @@ function MainController($rootScope, Authentication, ToDoService, NotesService, $
     self.notes = [];
     self.todo = [];
 
-    self.map = {
-        map : {}
-    };
+    uiGmapGoogleMapApi
+        .then(function(map){
+            navigator.geolocation.getCurrentPosition(centerMe);
 
-    self.afterInit = ($map) => {
-        self.map.map = $map;
-    };
+            self.map = {
+                zoom: 10,
+                markers : {
+                    coords : [],
+                    events : {
+                        click: function (marker, event, model) {
+                            self.map.window.model = model;
+                            self.map.window.show = !self.map.window.show;
+                        }
+                    }
+                },
+                events: {
+                    click: function(mapModel, eventName, originalEventArgs) {
+                        var e = originalEventArgs[0];
 
-    self.mapClick = (e) => {
-        var coords = e.get('coords');
-        console.log(coords)
-    };
+                        var marker = {
+                            coords : {
+                                latitude: e.latLng.lat(),
+                                longitude: e.latLng.lng()
+                            },
+                            id : Date.now()
+                        };
+
+                        MarkerService.create(self.user._id, marker)
+                            .then(function(result){
+                                self.map.markers.coords.push(result);
+                            });
+
+                        $rootScope.$apply();
+                    }
+                },
+                window: {
+                    model: {},
+                    show: false,
+                    options:{
+                        pixelOffset: {width:-1,height:-20}
+                    },
+                    parent: self
+                },
+                fit: false,
+                options: {
+                    scrollwheel: true
+                }
+            };
+
+            function centerMe(position) {
+                self.map.center = {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                };
+            }
+        });
 
     NotesService
         .get(self.user._id)
@@ -38,12 +82,40 @@ function MainController($rootScope, Authentication, ToDoService, NotesService, $
         });
 
 
+    // Markers
+
+    MarkerService
+        .get(self.user._id)
+        .then(function (markers) {
+            self.map.markers.coords = markers;
+        });
+
+
+    self.updateMarker = (marker) => {
+        MarkerService
+            .edit(marker._id, marker)
+            .then(function(){
+
+            });
+    };
+
+    self.deleteMarker = (marker) => {
+        MarkerService
+            .remove(marker._id)
+            .then(function(){
+                self.map.markers.coords.splice(self.map.markers.coords.indexOf(marker), 1);
+                self.map.window.show = false;
+            });
+    };
+
+
     // Note
 
     self.createNote = (text) => {
         NotesService
             .create(self.user._id, text.text)
             .then(function (note) {
+                self.newNote = '';
                 self.notes.unshift(note);
             });
     };
@@ -71,6 +143,7 @@ function MainController($rootScope, Authentication, ToDoService, NotesService, $
         ToDoService
             .create(self.user._id, todo)
             .then(function (todo) {
+                self.newToDo = '';
                 self.todo.unshift(todo);
             });
     };

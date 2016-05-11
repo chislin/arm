@@ -1,0 +1,5 @@
+.map-popup
+    p.title {{ parameter.model.note }}
+    input.form-group(ng-model='parameter.model.note')
+    button.btn.btn-success(ng-click="parameter.parent.updateMarker(parameter.model)") +
+    button.btn.btn-danger(ng-click="parameter.parent.deleteMarker(parameter.model)") X

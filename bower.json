@@ -19,7 +19,7 @@
     "angular-animate": "*",
     "bootstrap": "*",
     "font-awesome": "*",
-    "angular-yandex-maps": "tulov/angular-yandex-map"
+    "angular-google-maps": "^2.3.2"
   },
   "resolutions": {
     "angular": "1.5.5"

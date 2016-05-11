@@ -35,7 +35,9 @@ var paths = {
         `vendor/angular-permission/dist/angular-permission.js`,
         `vendor/angular-file-upload/dist/angular-file-upload.js`,
         `vendor/angular-toastr/dist/angular-toastr.tpls.js`,
-        'vendor/angular-yandex-maps/ya-map-2.1.min.js'
+        'vendor/lodash/dist/lodash.js',
+        'vendor/angular-simple-logger/dist/angular-simple-logger.js',
+        'vendor/angular-google-maps/dist/angular-google-maps.js'
     ],
     styles : [
         `vendor/bootstrap/dist/css/bootstrap.css`, 

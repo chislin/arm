@@ -22,7 +22,11 @@ nav.navbar
 
 .container
     .col-md-12.map
-        ya-map.map-container.col-md-12(ya-zoom="12", ya-after-init="self.afterInit($target)", ya-event-click="self.mapClick($event)")
+        ui-gmap-google-map(center='self.map.center', zoom='self.map.zoom', options="self.map.options", events = 'self.map.events')
+            ui-gmap-markers(models='self.map.markers.coords', coords="'coords'", fit = 'self.map.fit', options="self.map.options", events = 'self.map.markers.events')
+                ui-gmap-window(show='self.map.window.show', coords='self.map.window.model.coords', options='self.map.window.options', ng-cloak,
+                               templateurl="'/main/popup.html'", templateParameter='self.map.window')
+
     .col-sm-6.todo
         .col-md-5
             .form-group

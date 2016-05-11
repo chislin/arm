@@ -169,8 +169,26 @@ body.main {
   }
 }
 
-.map-container {
-  height: 300px;
-  width: 100%;
+.map {
+  height: 400px;
 
+  ui-gmap-google-map {
+    .angular-google-map, .angular-google-map-container {
+      height: 100%;
+    }
+    .map-popup {
+      text-align: left;
+      p {
+        padding: 0;
+        &.title {
+          font-weight: bold;
+        }
+      }
+      .image {
+        height: 100px;
+        width: 150px;
+        background-size: cover;
+      }
+    }
+  }
 }
