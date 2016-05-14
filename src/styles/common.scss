@@ -85,22 +85,3 @@ textarea {
 .clearfix:after {
   clear: both;
 }
-
-
-// AUTH PAGE STYLES
-body.auth {
-  .well {
-    margin-top: 15%;
-  }
-
-  .switch {
-    width: 100%;
-    text-align: center;
-    a { 
-      cursor: pointer;
-    }
-  }
-  .btn {
-    width: 100%;
-  }
-}

@@ -1,34 +1,38 @@
 .col-md-6.col-lg-4.col-md-offset-3.col-lg-offset-4(ng-switch = 'self.view')
 
-    .signin-container.well(ng-switch-when = 'signup')
-        .signin-header
-            .brand
-                h2 Мобильное АРМ следователя
+    .signin-container.well
+        .header
+            a
+                | Мобильное АРМ следователя  
 
-        .signin-form
-            h5 Создать новую учетную запись
+        .form(ng-switch-when = 'signup')
+            .text
+                span Создать новую учетную запись
+
             form(ng-submit='self.signUp(self.credentials_signup)')
                 .form-group
+                    i.fa.fa-user
                     input.form-control(ng-model = 'self.credentials_signup.username', type='text', placeholder='Логин')
                 .form-group
+                    i.fa.fa-lock
                     input.form-control(ng-model = 'self.credentials_signup.password', type='password', placeholder='Пароль')
                 .form-group
+                    i.fa.fa-lock
                     input.form-control(ng-model = 'self.credentials_signup.password_check', type='password', placeholder='Подтвердите пароль')
 
                 .form-actions
                     button.btn.btn-primary(type='submit') Создать
 
-    .signup-container.well(ng-switch-when = 'signin')
-        .signin-header
-            .brand
-                h2 Мобильное АРМ следователя
+        .form(ng-switch-when = 'signin')
+            .text
+                span Войти в учетную запись
 
-        .signin-form
-            h5 Войти в существующую учетную запись
             form(ng-submit='self.signIn(self.credentials_signin)')
                 .form-group
+                    i.fa.fa-user
                     input.form-control(ng-model = 'self.credentials_signin.username', type='text', placeholder='Логин')
                 .form-group
+                    i.fa.fa-lock
                     input.form-control(ng-model = 'self.credentials_signin.password', type='password', placeholder='Пароль')
                 .form-actions
                     button.btn.btn-primary(type='submit') Войти

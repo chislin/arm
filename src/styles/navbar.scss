@@ -9,7 +9,7 @@
   margin: 0;
   border: 0;
   z-index: 2;
-  background-color: #2196f3;
+  background-color: $primary-color;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
   color: #fff;
   font-weight: bold;
@@ -18,10 +18,10 @@
   }
 
   li a {
-    color: #fff;
+    color: #fff; 
   }
 
   li a:hover, li.open a{
-    background-color: darken(#2196f3, 10%) !important;
+    background-color: darken($primary-color, 10%) !important;
   }
 }
