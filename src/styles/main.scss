@@ -1,9 +1,11 @@
 // MAIN PAGE STYLES
 
 body.main {
+  background-color: #e5e5e5;
+
   .navbar {
     overflow: visible;
-    margin-bottom: 15px;
+    padding-top: 15px;
     li {
       cursor: pointer;
     }
@@ -17,6 +19,33 @@ body.main {
     padding: 0;
   }
 
+  .block {
+    background-color: #fff;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.10);
+    position: relative;
+    padding: 5px;
+    &:hover { box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.20); }
+
+    .add-container {
+      width: 100%;
+      overflow: hidden;
+      .col {
+        padding: 0;
+        input {
+          margin: 0;
+          border-right: 0;
+          border-radius: 0;
+        }
+
+        .btn {
+          border-radius: 0;
+          border-left: 0;
+        }
+      }
+    }
+  }
   .note {
     width: 100%;
     list-style: none;

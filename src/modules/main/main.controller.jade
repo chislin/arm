@@ -14,91 +14,91 @@ nav.navbar
                     li: a(ng-click='self.logout()')
                         | Logout
 
-
-
 .container
-    .col-md-12.map
-        ui-gmap-google-map(center='self.map.center', zoom='self.map.zoom', options="self.map.options", events = 'self.map.events')
-            ui-gmap-markers(models='self.map.markers.coords', coords="'coords'", fit = 'self.map.fit', options="self.map.options", events = 'self.map.markers.events')
-                ui-gmap-window(show='self.map.window.show', coords='self.map.window.model.coords', options='self.map.window.options', ng-cloak,
+    .col-md-12
+        .block.map
+            ui-gmap-google-map(center='self.map.center', zoom='self.map.zoom', options="self.map.options", events = 'self.map.events')
+                ui-gmap-markers(models='self.map.markers.coords', coords="'coords'", fit = 'self.map.fit', options="self.map.options", events = 'self.map.markers.events')
+                    ui-gmap-window(show='self.map.window.show', coords='self.map.window.model.coords', options='self.map.window.options', ng-cloak,
                                templateurl="'/main/popup.html'", templateParameter='self.map.window')
 
-    .col-md-6.todo
-        .col-md-5
-            .form-group
-                input.form-control(ng-model='self.newToDo.text', placeholder = 'Todo')
+    .col-md-6
+        .block.todo
+            .add-container.clearfix
+                .col.col-md-5
+                    .form-group
+                        input.form-control(ng-model='self.newToDo.text', placeholder = 'Todo')
 
-        .col-md-4
-            .input-group(ng-init = 'self.datepicker = false')
-                input.form-control(type="text", uib-datepicker-popup, ng-model="self.newToDo.expired", is-open="self.datepicker", placeholder = "yyyy-mm-dd")
-                span.input-group-btn
-                    button.btn.btn-default(type='button', ng-click='self.datepicker = !self.datepicker')
-                        i.glyphicon.glyphicon-calendar
+                .col.col-md-4
+                    .input-group(ng-init = 'self.datepicker = false')
+                        input.form-control(type="text", uib-datepicker-popup, ng-model="self.newToDo.expired", is-open="self.datepicker", placeholder = "yyyy-mm-dd")
+                        span.input-group-btn
+                            button.btn.btn-default(type='button', ng-click='self.datepicker = !self.datepicker')
+                                i.glyphicon.glyphicon-calendar
 
-        .col-md-3
-            btn.btn.btn-success(ng-click = 'self.createToDo(self.newToDo)') Create new ToDo
+                .col.col-md-3
+                    btn.btn.btn-success(ng-click = 'self.createToDo(self.newToDo)') Создать
 
-        table.table.table-hover
-            thead
-                tr
-                    th
-                    th ToDo
-                    th Created
-                    th Expired
-                    th Actions
+            table.table.table-hover
+                thead
+                    tr
+                        th
+                        th ToDo
+                        th Created
+                        th Expired
+                        th Actions
 
-            tbody.note(ng-repeat = "todo in self.todo | orderBy: 'done'", ng-init = 'todo.edit = false', ng-class = "todo.done ? 'done' : ''")
-                tr(ng-if = '!todo.edit')
-                    td: input(type='checkbox', ng-model='todo.done', ng-change = 'self.updateToDo(todo)')
-                    td {{ todo.text }}
-                    td {{ todo.created | date : medium }}
-                    td {{ todo.expired | date : medium }}
-                    td.actions
-                        i.fa.fa-pencil(ng-click='todo.edit = !todo.edit')
-                        i.fa.fa-trash(ng-click='self.deleteToDo(todo._id, $index)')
+                tbody.note(ng-repeat = "todo in self.todo | orderBy: 'done'", ng-init = 'todo.edit = false', ng-class = "todo.done ? 'done' : ''")
+                    tr(ng-if = '!todo.edit')
+                        td: input(type='checkbox', ng-model='todo.done', ng-change = 'self.updateToDo(todo)')
+                        td {{ todo.text }}
+                        td {{ todo.created | date : medium }}
+                        td {{ todo.expired | date : medium }}
+                        td.actions
+                            i.fa.fa-pencil(ng-click='todo.edit = !todo.edit')
+                            i.fa.fa-trash(ng-click='self.deleteToDo(todo._id, $index)')
 
-                tr(ng-if = 'todo.edit')
-                    td
-                    td: input(ng-model='todo.text')
-                    td {{ todo.created | date: medium }}
-                    td: .input-group(ng-init = 'todo.dt = false')
-                        input.form-control(type="text", uib-datepicker-popup, ng-model="todo.expired", is-open="todo.dt", placeholder = "yyyy-mm-dd")
-                        button.btn.btn-default.btn-calendar(type='button', ng-click='todo.dt = !todo.dt')
-                            i.glyphicon.glyphicon-calendar
-                    td.actions
-                        i.fa.fa-check(ng-click='self.updateToDo(todo)')
+                    tr(ng-if = 'todo.edit')
+                        td
+                        td: input(ng-model='todo.text')
+                        td {{ todo.created | date: medium }}
+                        td: .input-group(ng-init = 'todo.dt = false')
+                            input.form-control(type="text", uib-datepicker-popup, ng-model="todo.expired", is-open="todo.dt", placeholder = "yyyy-mm-dd")
+                            button.btn.btn-default.btn-calendar(type='button', ng-click='todo.dt = !todo.dt')
+                                i.glyphicon.glyphicon-calendar
+                        td.actions
+                            i.fa.fa-check(ng-click='self.updateToDo(todo)')
 
-    hr
+    .col-md-6
+        .block.notes
+            .add-container 
+                .col.col-md-8
+                    .form-group
+                        input.form-control(ng-model='self.newNote.text', placeholder = 'Note')
 
-    .col-md-6.notes
-        .col-md-8
-            .form-group
-                input.form-control(ng-model='self.newNote.text', placeholder = 'Note')
+                .col.col-md-4
+                    btn.btn.btn-success(ng-click = 'self.createNote(self.newNote)') Создать
 
-        .col-md-4
-            btn.btn.btn-success(ng-click = 'self.createNote(self.newNote)') Create new Note
+            table.table.table-hover
+                thead
+                    tr
+                      th Note
+                      th Created
+                      th Actions
 
-        table.table.table-hover
-            thead
-                tr
-                  th Note
-                  th Created
-                  th Actions
+                  tbody.note(ng-repeat = 'note in self.notes', ng-init = 'note.edit = false')
+                    tr(ng-if = '!note.edit')
+                      td {{ note.text }}
+                      td {{ note.created | date: medium }}
+                      td.actions
+                        i.fa.fa-pencil(ng-click='note.edit = !note.edit')
+                        i.fa.fa-trash(ng-click='self.deleteNote(note._id, $index)')
 
-              tbody.note(ng-repeat = 'note in self.notes', ng-init = 'note.edit = false')
-                tr(ng-if = '!note.edit')
-                  td {{ note.text }}
-                  td {{ note.created | date: medium }}
-                  td.actions
-                    i.fa.fa-pencil(ng-click='note.edit = !note.edit')
-                    i.fa.fa-trash(ng-click='self.deleteNote(note._id, $index)')
-
-                tr(ng-if = 'note.edit')
-                  td: input(ng-model='note.text')
-                  td {{ note.created | date: medium }}
-                  td.actions
-                    i.fa.fa-check(ng-click='self.updateNote(note)')
-
+                    tr(ng-if = 'note.edit')
+                      td: input(ng-model='note.text')
+                      td {{ note.created | date: medium }}
+                      td.actions
+                        i.fa.fa-check(ng-click='self.updateNote(note)')
 
     hr
     footer.footer
