@@ -2,7 +2,7 @@ nav.navbar
     .container
         .navbar-header
             .navbar-brand
-                | ARM
+                | Мобильное АРМ следователя
 
         ul.nav.navbar-nav.navbar-right
             li.dropdown(uib-dropdown)
@@ -12,7 +12,7 @@ nav.navbar
 
                 ul.uib-dropdown-menu(uib-dropdown-menu)
                     li: a(ng-click='self.logout()')
-                        | Logout
+                        | Выйти из учетной записи
 
 .container
     .col-md-12
@@ -27,7 +27,7 @@ nav.navbar
             .add-container.clearfix
                 .col.col-md-5
                     .form-group
-                        input.form-control(ng-model='self.newToDo.text', placeholder = 'Todo')
+                        input.form-control(ng-model='self.newToDo.text', placeholder = 'Введите текст напоминания')
 
                 .col.col-md-4
                     .input-group(ng-init = 'self.datepicker = false')
@@ -43,16 +43,14 @@ nav.navbar
                 thead
                     tr
                         th
-                        th ToDo
-                        th Created
-                        th Expired
-                        th Actions
+                        th Напоминание
+                        th Истекает
+                        th 
 
                 tbody.note(ng-repeat = "todo in self.todo | orderBy: 'done'", ng-init = 'todo.edit = false', ng-class = "todo.done ? 'done' : ''")
                     tr(ng-if = '!todo.edit')
                         td: input(type='checkbox', ng-model='todo.done', ng-change = 'self.updateToDo(todo)')
                         td {{ todo.text }}
-                        td {{ todo.created | date : medium }}
                         td {{ todo.expired | date : medium }}
                         td.actions
                             i.fa.fa-pencil(ng-click='todo.edit = !todo.edit')
@@ -61,9 +59,8 @@ nav.navbar
                     tr(ng-if = 'todo.edit')
                         td
                         td: input(ng-model='todo.text')
-                        td {{ todo.created | date: medium }}
                         td: .input-group(ng-init = 'todo.dt = false')
-                            input.form-control(type="text", uib-datepicker-popup, ng-model="todo.expired", is-open="todo.dt", placeholder = "yyyy-mm-dd")
+                            input.form-control(type="text", uib-datepicker-popup, ng-model="todo.expired", is-open="todo.dt", placeholder = "гггг-мм-дд")
                             button.btn.btn-default.btn-calendar(type='button', ng-click='todo.dt = !todo.dt')
                                 i.glyphicon.glyphicon-calendar
                         td.actions
@@ -74,7 +71,7 @@ nav.navbar
             .add-container 
                 .col.col-md-8
                     .form-group
-                        input.form-control(ng-model='self.newNote.text', placeholder = 'Note')
+                        input.form-control(ng-model='self.newNote.text', placeholder = 'Введите текст заметки')
 
                 .col.col-md-4
                     btn.btn.btn-success(ng-click = 'self.createNote(self.newNote)') Создать
@@ -82,9 +79,9 @@ nav.navbar
             table.table.table-hover
                 thead
                     tr
-                      th Note
-                      th Created
-                      th Actions
+                      th Заметка
+                      th Создана
+                      th 
 
                   tbody.note(ng-repeat = 'note in self.notes', ng-init = 'note.edit = false')
                     tr(ng-if = '!note.edit')
@@ -102,4 +99,4 @@ nav.navbar
 
     hr
     footer.footer
-        p &copy; 2015 Vlad's awesome company, Inc.
+        p &copy; Chislin Vlad, TSTU, 2016
