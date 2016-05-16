@@ -26,12 +26,12 @@ function MainController($rootScope, Authentication, ToDoService, NotesService, u
 
             self.map = {
                 center : {
-                    latitude: 52,
-                    longitude: 41
+                    latitude: 52.7559244,
+                    longitude: 41.4092994
                 },
                 zoom: 10,
                 markers : {
-                    coords : [], 
+                    coords : [],
                     events : {
                         click: function (marker, event, model) {
                             self.map.window.model = model;

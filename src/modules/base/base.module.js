@@ -8,8 +8,8 @@ angular
     .config(configure)
     .run(run);
 
-configure.$inject = ['$locationProvider', '$stateProvider', '$urlRouterProvider', 'uiGmapGoogleMapApiProvider'];
-function configure($locationProvider, $stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
+configure.$inject = ['$locationProvider', '$stateProvider', '$urlRouterProvider'];
+function configure($locationProvider, $stateProvider, $urlRouterProvider) {
     $locationProvider.html5Mode({
         enabled : true,
         requireBase : true,
@@ -21,7 +21,6 @@ function configure($locationProvider, $stateProvider, $urlRouterProvider, uiGmap
             url : '/',
             template: '',
             controller : [ "$state", "Authentication", function ($state, Authentication){
-                console.log(Authentication.isAuthenticated()); 
                 return Authentication.isAuthenticated() ? $state.go('main') : $state.go('auth');
             }]
         })
@@ -29,11 +28,6 @@ function configure($locationProvider, $stateProvider, $urlRouterProvider, uiGmap
             url : '/err404',
             templateUrl : './../404.html'
         });
-
-    // uiGmapGoogleMapApiProvider.configure({
-    //     v: '3.20',
-    //     libraries: ''
-    // });
 }
 
 run.$inject = ['$state', '$rootScope'];
