@@ -29,6 +29,7 @@ var paths = {
     libs : [
         `vendor/jquery/dist/jquery.js`,
         `vendor/angular/angular.js`,
+        'vendor/angular-i18n/angular-locale_ru-ru.js',
         `vendor/angular-ui-router/release/angular-ui-router.js`,
         `vendor/angular-animate/angular-animate.js`,
         `vendor/angular-bootstrap/ui-bootstrap-tpls.js`,
@@ -40,7 +41,7 @@ var paths = {
         'vendor/angular-google-maps/dist/angular-google-maps.js'
     ],
     styles : [
-        `vendor/bootstrap/dist/css/bootstrap.css`, 
+        `vendor/bootstrap/dist/css/bootstrap.css`,
         `vendor/font-awesome/scss/font-awesome.scss`,
         `vendor/angular-toastr/dist/angular-toastr.css`
     ],
