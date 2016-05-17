@@ -14,7 +14,7 @@ nav.navbar
                     li: a(ng-click='self.logout()')
                         | Выйти из учетной записи
 
-.container
+.container.content
     .col-md-12
         .block.map
             ui-gmap-google-map(center='self.map.center', zoom='self.map.zoom', options="self.map.options", events = 'self.map.events')
@@ -31,7 +31,7 @@ nav.navbar
 
                 .col.col-md-4
                     .input-group(ng-init = 'self.datepicker = false')
-                        input.form-control(type="text", uib-datepicker-popup, ng-model="self.newToDo.expired", is-open="self.datepicker", placeholder = "yyyy-mm-dd")
+                        input.form-control(type="text", uib-datepicker-popup, ng-model="self.newToDo.expired", is-open="self.datepicker", placeholder = "гггг-мм-дд")
                         span.input-group-btn
                             button.btn.btn-default(type='button', ng-click='self.datepicker = !self.datepicker')
                                 i.glyphicon.glyphicon-calendar
@@ -97,6 +97,6 @@ nav.navbar
                       td.actions
                         i.fa.fa-check(ng-click='self.updateNote(note)')
 
-    hr
-    footer.footer
-        p &copy; Chislin Vlad, TSTU, 2016
+hr
+footer.footer
+    p &copy; Chislin Vlad, TSTU, 2016

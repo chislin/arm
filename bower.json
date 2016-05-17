@@ -11,6 +11,7 @@
   "dependencies": {
     "jquery": "*",
     "angular": "*",
+    "angular-i18n": "*",
     "angular-ui-router": "*",
     "angular-bootstrap": "*",
     "angular-permission": "2.3.8",
