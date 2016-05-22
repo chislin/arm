@@ -115,13 +115,13 @@ body.main {
   .uib-datepicker-popup {
     .btn {
       border-radius: 0;
-      background-color: $primary-color-lighten !important;
+      background-color: rgba(99, 86, 86, 0.53) !important;
       border-color: transparent;
       i {
         color: #fff;
       }
       &:hover {
-        background-color: $primary-color-lighten !important;;
+        background-color: rgba(99, 86, 86, 0.53) !important;
       }
     }
   }
