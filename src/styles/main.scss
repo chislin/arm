@@ -112,19 +112,19 @@ body.main {
     }
   }
 
-  // uib-datepicker-popup dropdown-menu {
-  //   .btn {
-  //     border-radius: 0;
-  //     background-color: $primary-color-lighten !important;
-  //     border-color: transparent;
-  //     i {
-  //       color: #fff;
-  //     }
-  //     &:hover {
-  //       background-color: $primary-color-lighten !important;;
-  //     }
-  //   }
-  // }
+  .uib-datepicker-popup {
+    .btn {
+      border-radius: 0;
+      background-color: $primary-color-lighten !important;
+      border-color: transparent;
+      i {
+        color: #fff;
+      }
+      &:hover {
+        background-color: $primary-color-lighten !important;;
+      }
+    }
+  }
 
   .map {
     height: 400px;

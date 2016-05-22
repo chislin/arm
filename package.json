@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "body-parser": "^1.15.0",
+    "body-parser": "*",
     "bower": "*",
     "express": "*",
     "gulp": "*",
@@ -25,8 +25,8 @@
     "gulp-sourcemaps": "*",
     "gulp-uglify": "*",
     "gulp-wrap": "*",
-    "md5": "^2.1.0",
-    "mongoose": "^4.4.12",
+    "md5": "*",
+    "mongoose": "*",
     "serve-static": "*",
     "yargs": "*"
   },
