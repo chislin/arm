@@ -102,12 +102,12 @@ body.auth {
     width: 100%;
     text-align: center;
     color: #fff;
-    a { 
+    a {
       cursor: pointer;
-      color: $primary-color;
+      color: lighten($primary-color, 15%);
       font-weight: bold;
       &:hover {
-        color: darken($primary-color, 15%);
+        color: lighten($primary-color, 30%);
       }
     }
   }

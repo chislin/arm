@@ -26,8 +26,8 @@ function MainController($rootScope, Authentication, ToDoService, NotesService, u
 
             self.map = {
                 center : {
-                    latitude: 52.7559244,
-                    longitude: 41.4092994
+                    latitude: 52.717911,
+                    longitude: 41.5066452
                 },
                 zoom: 10,
                 markers : {
